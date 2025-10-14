@@ -43,3 +43,9 @@ python habit.py delete 2 --yes
 ```
 
 You can use a different data file: `python habit.py --file data/study.json add "Revise SQL"`. Dates must be today or earlier. Checking the same habit twice on the same day does not double-count it. A current streak may end today or yesterday, so an unfinished today does not immediately break it. Damaged JSON is reported without overwriting it. This is a single-user CLI; it does not coordinate simultaneous writers.
+
+## Command demonstration
+
+![Recorded CLI demonstration](docs/demo.gif)
+
+The animation was generated from real command output using disposable sample data.
