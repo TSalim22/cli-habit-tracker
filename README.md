@@ -1,51 +1,49 @@
 # CLI Habit Tracker
 
-Track daily habits and streaks in a local JSON file.
+A command-line app for tracking daily habits and streaks.
 
-This is a small, independent Python portfolio project. The code favours ordinary functions and clear modules over complex architecture.
+## Try it in your browser
 
-## Setup
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/TSalim22/cli-habit-tracker?quickstart=1)
 
-Requires Python 3.12+ (desktop tools also require Tkinter, included with the standard Windows Python installer).
+Sign in to GitHub, open a Codespace and wait for setup. Then run this in its terminal:
 
 ```sh
+python habit.py --help
+```
+
+Codespaces uses your GitHub account’s allowance. Stop it when finished.
+
+## Run it
+
+Python 3.12 or later. Run these commands from the project folder:
+
+```powershell
 python -m venv .venv
-# Windows PowerShell:
 .venv\Scripts\Activate.ps1
-# macOS/Linux instead: source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
 python habit.py --help
 ```
 
-Run commands from this repository's root. Web apps bind to localhost by default. Each app is independent, so stop one before starting another on the same port.
+On macOS or Linux, activate with `source .venv/bin/activate` instead.
 
-## Check it
+## How to use it
+
+```sh
+python habit.py add "Read for 20 minutes"
+python habit.py list
+python habit.py check 1
+python habit.py stats
+python habit.py uncheck 1
+python habit.py delete 1 --yes
+```
+
+Habits are saved in `data/habits.json`. Use `--date YYYY-MM-DD` to record an earlier day. The same day is only counted once.
+
+![Demo](docs/demo.gif)
+
+## Tests
 
 ```sh
 python -m pytest -q
 ```
-
-## Dates
-
-The commit author dates have been deliberately arranged between October 2025 and October 2026 at the portfolio owner's request. They are presentation metadata, not a record of the actual development timeline. Repository creation and upload timestamps remain the real dates.
-
-## Example session
-
-```sh
-python habit.py add "Read for 20 minutes"
-python habit.py add "Practice Python"
-python habit.py list
-python habit.py check 1
-python habit.py check 2 --date 2026-10-01
-python habit.py stats
-python habit.py uncheck 1
-python habit.py delete 2 --yes
-```
-
-You can use a different data file: `python habit.py --file data/study.json add "Revise SQL"`. Dates must be today or earlier. Checking the same habit twice on the same day does not double-count it. A current streak may end today or yesterday, so an unfinished today does not immediately break it. Damaged JSON is reported without overwriting it. This is a single-user CLI; it does not coordinate simultaneous writers.
-
-## Command demonstration
-
-![Recorded CLI demonstration](docs/demo.gif)
-
-The animation was generated from real command output using disposable sample data.
